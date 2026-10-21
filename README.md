@@ -12,8 +12,9 @@ A lightweight Windows application that displays the currently playing TIDAL trac
 
 1. Install **TIDAL Discord** using the installer.
 2. Open **Discord**.
-3. Open **TIDAL** and start playing a track.
-4. TIDAL Discord will automatically display the current track in your Discord Rich Presence.
+3. Open **TIDAL** and select a track.
+4. Open Tidal-discord
+5. TIDAL Discord will automatically display the current track in your Discord Rich Presence.
 
 Discord and TIDAL must be running for the application to work.
 
