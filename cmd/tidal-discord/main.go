@@ -44,7 +44,6 @@ func main() {
 		if err != nil {
 			fmt.Println("Error:", err)
 		} else if track != nil {
-			// Временно выводим состояние каждую секунду.
 			fmt.Printf(
 				"%s — %s | position=%v | playing=%v\n",
 				track.Artist,
