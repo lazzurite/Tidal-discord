@@ -4,6 +4,7 @@ package media
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/go-ole/go-ole"
@@ -65,6 +66,16 @@ func (WindowsProvider) CurrentTrack() (*Track, error) {
 	session, err := manager.GetCurrentSession()
 	if err != nil {
 		return nil, err
+	}
+	if session == nil {
+		return nil, nil // Сессии нет, просто ждём следующий тик
+	}
+	appId, err := session.GetSourceAppUserModelId()
+	if err == nil {
+		// Проверяем, что источник относится именно к TIDAL
+		if !strings.Contains(strings.ToLower(appId), "tidal") {
+			return nil, nil // Игнорируем YouTube, браузеры и другие плееры
+		}
 	}
 
 	playbackInfo, err := session.GetPlaybackInfo()

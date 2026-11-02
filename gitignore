@@ -1,0 +1,11 @@
+# Build
+tidal-discord.exe
+installer/TidalDiscordSetup.exe
+
+# Go
+*.test
+*.out
+
+# IDE
+.idea/
+.vscode/
