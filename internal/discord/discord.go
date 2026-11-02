@@ -37,9 +37,17 @@ func SetTrack(track *media.Track) error {
 	if track.Playing {
 		start := time.Now().Add(-track.Position)
 
-		activity.Timestamps = &client.Timestamps{
+		ts := &client.Timestamps{
 			Start: &start,
 		}
+
+		// Добавляем конец трека для появления шкалы времени в Discord
+		if track.Duration > 0 {
+			end := start.Add(track.Duration)
+			ts.End = &end
+		}
+
+		activity.Timestamps = ts
 	} else {
 		activity.State = fmt.Sprintf(
 			"%s • Paused at %s",
